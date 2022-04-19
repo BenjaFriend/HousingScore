@@ -1,0 +1,24 @@
+{
+    "name": "housing-score",
+    "version": "0.1.0",
+    "description": "Score houses based on a set of criteria",
+    "main": "./server/server.js",
+    "scripts": {
+      "start": "node ./server/server.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/BenjaFriend/HousingScore.git"
+    },
+    "author": "Ben Hoffman",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/BenjaFriend/HousingScore/issues"
+    },
+    "homepage": "https://github.com/BenjaFriend/HousingScore",
+    "dependencies": {
+      "npm": "^6.0.0",
+      "pg": "^7.11.0"
+    }
+  }
