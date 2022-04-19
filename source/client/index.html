@@ -6,15 +6,39 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="shortcut icon" type="image/png" href="favicon.png">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- <script src="scripts/servoControls.js"></script> -->
+  <script src="scripts/clientHandler.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
 <div id="mainContent">
-    
-  <h2><i class="material-icons">rocket_launch</i> Housing Scorer</h2>
+
+    <h2><i class="material-icons">rocket_launch</i> Housing Scorer</h2>
+
+    <form id="setHouseLink" action="/setHouseLink" method="post">
+
+        <!-- The link to the house -->
+        <div class="input-container">
+            <label for="houseLinkLabel">House Link:  </label>
+            <input id="houseLink" type="text" name="houseLink">
+        </div>
+
+        <div class="input-container">
+            <input id="longSubmitButton" type="submit" value="Set House Link" title="Set the link to the house with data to parse">
+        </div>
+
+    </form> <!-- setHouseLink -->
+
+    <div id="HouseData">
+        <!--- Example of what will be added to this div
+        <div id="event">
+          <p>Date: </p>
+          <p>Hour: </p>
+          <p>Door: </p>
+        </div>
+      -->
+      </div>
 
 </div> <!-- mainContent -->
 
