@@ -16,6 +16,20 @@ p {
   font-size: normal;
 }
 
+table.ScoreTable td {
+  
+}
+
+table.ScoreTable {
+  border-collapse: separate;
+  border-spacing: 10px;
+  *border-collapse: expression('separate', cellSpacing='10px');
+}
+
+#testID {
+  
+}
+
 /* Main Content */
 #mainContent {
   width: 800px;
