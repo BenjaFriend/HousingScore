@@ -8,6 +8,15 @@
     }, 
     false);
 
+    // TODO: export this from the server or somethign in a common lib
+    class HouseData
+    {
+        constructor(InAddress)
+        {
+            this.Address = InAddress;
+            this.SqFootScore = 0;
+        }
+    };
   
     /**
      * Initalize the client page. Sets up listeners for any button presses and that kind of thing
@@ -16,6 +25,9 @@
     {
         // Add a listener for scheudling
         document.querySelector("#setHouseLink").addEventListener("submit", setHouseLink);
+
+        var TestHouseData = new HouseData("Fake Address 123 Cary Strert");
+        CreateResultsTable(TestHouseData);
     }
 
     /** Get the value set by the user about what house they want to look at. This returns a URL from the text box */
@@ -33,10 +45,8 @@
         // Stop the page from relaoding when you press the button
         e.preventDefault();
 
-        console.log("House Link");
-
         var clientSetHouseLink = GetHouseLink();
-        console.log("the house link is '" + clientSetHouseLink + "'");
+
         if(!clientSetHouseLink)
         {
             AddErrorMessage("No link was given! Please provide a link before attempting to gather some data");
@@ -44,7 +54,9 @@
         }
 
         var xhr = new XMLHttpRequest();
-        var url = "/newHouseLink";
+        var action = document.querySelector("#setHouseLink").getAttribute("action");
+
+        var url = action + "?houseUrl=" + clientSetHouseLink;
 
         xhr.onload = function()
         {
@@ -67,15 +79,40 @@
     function OnHouseDataRecieved(responseJSON)
     {
         ResetDisplayedHouseData();
-        console.dir(responseJSON);
-
         var responseDiv = GetResponseDiv();
 
         var p = document.createElement("p");
-        var node = document.createTextNode("No feedings currently are scheduled.");
+        var node = document.createTextNode(JSON.stringify(responseJSON));
         p.appendChild(node);
-        responseDiv.appendChild(p)
-        return;     
+        responseDiv.appendChild(p);
+
+        // Make a table??
+
+        // Add the address as a header
+        var p = document.createElement("h2");
+        var node = document.createTextNode(responseJSON.Address);
+        p.appendChild(node);
+        responseDiv.appendChild(p);
+
+        CreateResultsTable(responseJSON);
+
+        return;
+    }
+
+    /** Creates a new table and appends it to the result div with info all about our house */
+    function CreateResultsTable(InHouseData)
+    {
+        var responseDiv = GetResponseDiv();
+
+        // Add price
+
+        // Square footage rank
+
+        // Number of rooms/bathrooms
+
+        // Add commute time
+
+        // Add Lot size
     }
 
     /** Display an error message to the user in the response div */

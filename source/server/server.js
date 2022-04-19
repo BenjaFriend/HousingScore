@@ -19,7 +19,7 @@ function onRequest(req, res)
 {
     var parsedUrl = url.parse(req.url);
     var params = query.parse(parsedUrl.query);
-    console.dir("\nthe query is: " + req.url);
+    //console.dir("the query is: " + req.url);
 
     // If the web page asked for styles.css
     if(parsedUrl.pathname === "/styles.css")
